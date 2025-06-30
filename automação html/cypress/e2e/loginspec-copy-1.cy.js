@@ -1,0 +1,27 @@
+describe('orange HTM test', () => {
+
+  const selectorList = {
+    usernamefield:"[name='username']",
+    passwordFild:"[name='password']",
+    loginButon: "[type='submit']",
+    selectorTitleTopBar:'.oxd-topbar-header-breadcrumb-module',
+    wrongCredentialAlert:"[role='alert']"
+  }
+
+  it('login - success', () => {
+    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.get(selectorList.usernamefield).type('Admin')
+    cy.get(selectorList.passwordFild).type('admin123')
+    cy.get(selectorList.loginButon).click()
+    cy.location('pathname').should('equal','/web/index.php/dashboard/index')
+    cy.get(selectorList.selectorTitleTopBar).contanis('Dashbord')
+  })
+  it('login - fail', () => {
+    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.get(selectorList.usernamefield).type('test')
+    cy.get(selectorList.passwordFild).type('test')
+    cy.get(selectorList.loginButon).click()
+    cy.get(selectorList.selectorTitleTopBar)
+    
+ })
+})
