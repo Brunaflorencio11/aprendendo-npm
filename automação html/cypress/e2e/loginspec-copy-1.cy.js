@@ -13,7 +13,7 @@ describe('orange HTM test', () => {
 
 
   it('login - success', () => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.visit('/auth/login')
     cy.get(selectorList.usernamefield).type(userData.userSucess.username)
     cy.get(selectorList.passwordFild).type(userData.userSucess.password)
     cy.get(selectorList.loginButon).click()
@@ -21,7 +21,7 @@ describe('orange HTM test', () => {
     cy.get(selectorList.selectorTitleTopBar).contanis('Dashbord')
   })
   it('login - fail', () => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.visit('/auth/login')
     cy.get(selectorList.usernamefield).type(userData.userSucess.password)
     cy.get(selectorList.passwordFild).type('test')
     cy.get(selectorList.loginButon).click()
